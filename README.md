@@ -37,16 +37,20 @@ Tkinter is included with most standard Python installations. On some Linux distr
 1. Enter a website and email or username.
 2. Click **Generate Password** to create a password containing lowercase letters, numbers, and symbols.
 3. The generated password is inserted into the password field and copied automatically to the clipboard for convenient pasting.
-4. Click **Add** to validate that no field is empty.
+4. Click **Add** to validate the form. The website, email/username, and password fields are all required.
 5. Review the entered website, email, and password in a confirmation dialog box.
 6. Confirm the dialog to append the record to `data.txt`.
 7. The website and password fields are cleared after a successful save, while the email field remains available for the next entry.
+
+### Empty-field validation
+
+When **Add** is clicked, the program checks whether any of the three input fields is empty. If the website, email/username, or password field has no value, the record is not saved. Instead, an **Oops** dialog asks the user to fill in every field. The confirmation dialog is shown only after all fields contain values.
 
 ## Dialog box experience
 
 The application uses dialogs at the important points in the workflow:
 
-- An **Oops** information dialog appears when the website, email/username, or password field is empty.
+- An **Oops** information dialog appears when any required input field is empty and asks the user to fill in the missing fields.
 - A confirmation dialog displays the website, email, and password before saving, allowing the user to cancel or approve the operation.
 
 This gives the user a clear chance to catch incorrect details before they are written to the local file.
