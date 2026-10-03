@@ -62,3 +62,44 @@ After password generation, `pyperclip.copy()` places the generated password on t
 ## Storage and security note
 
 Records are stored as plain text in `data.txt`. This project is intended for practice and local learning. Do not use it for real credentials without adding encryption, secure access controls, and safer credential storage. Avoid committing real passwords or other sensitive data to a public repository.
+
+## Current version
+
+The current version of the application has been upgraded from the original
+append-only text-file workflow described above. The original documentation is
+kept unchanged as a record of the project's history.
+
+### New features and changes
+
+- Uses the `json` module to store password records in a structured format.
+- Saves records to a local `data.json` file instead of appending to `data.txt`.
+- Updates existing JSON data when a new website record is saved.
+- Creates `data.json` automatically when the file does not yet exist.
+- Adds a **Search** button for finding saved credentials by website.
+- Displays the saved email/username and password in a message box when a
+  website is found.
+- Displays an error message when no local data file exists or when no record
+  matches the requested website.
+- Adds `try`/`except FileNotFoundError` handling when saving and searching, so
+  the application does not crash when `data.json` is missing.
+- Uses `else` and `finally` blocks in the save workflow to update existing
+  records and clear the website and password fields after the operation.
+- Removes the save confirmation dialog; valid entries are saved immediately.
+- Keeps required-field validation for the website, email/username, and
+  password fields.
+- Restores the default email address in the email/username field.
+- Changes the website field layout to a narrower field beside the Search
+  button.
+
+### Local data file
+
+When the program runs and a password is saved, it creates `data.json` on the
+local machine if it does not already exist. The file contains the website,
+email/username, and password credentials entered by the user, and is used by
+the Search feature.
+
+For privacy and security, `data.json` is excluded from version control through
+`.gitignore`. It must not be committed to this public repository because it
+contains local credentials. The application should be used for learning only;
+real credentials should be protected with encryption and safer credential
+storage.
